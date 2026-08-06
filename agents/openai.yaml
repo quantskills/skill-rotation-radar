@@ -1,0 +1,7 @@
+interface:
+  display_name: "轮动雷达"
+  short_description: "行业轮动与市场状态分析"
+  icon_small: "./assets/rotation-radar.svg"
+  icon_large: "./assets/rotation-radar.svg"
+  brand_color: "#B45309"
+  default_prompt: "使用 $rotation-radar 识别市场状态、排序行业，并用清晰的验证逻辑解释轮动结论。"
