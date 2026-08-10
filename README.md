@@ -20,6 +20,17 @@
 2. **领导力层**：哪些行业或 ETF 在多个窗口里持续相对强势
 3. **确认层**：宽度、成交、资金流或风格因子是否支持这次迁移
 
+## 项目状态与研究边界
+
+| 项目项 | 说明 |
+| --- | --- |
+| 项目状态 | Community Project；尚未获得 QUANTSKILLS 的审核、认证或背书 |
+| 维护者 | 本仓库维护者及贡献者 |
+| 数据来源 | 使用者提供或指定的市场/ETF 行情、成分股宽度、基准、成交量和资金流数据 |
+| 核心假设 | 观察窗口、基准、可交易对象和确认信号的口径与实际研究问题一致 |
+| 已知限制 | 成分股变化、窄幅上涨、数据延迟、资金流口径和市场状态跳变会影响判断 |
+| 风险边界 | 仅用于研究与教育示例；不自动获取数据、不执行交易，结论需结合原始数据独立复核 |
+
 ## 核心逻辑
 
 ```text
@@ -45,7 +56,7 @@ valid_rotation    = rotation_score 高 + 至少两个确认信号同向
 
 ```bash
 # 校验测试用例
-python scripts/check_test_cases.py
+python3 scripts/check_test_cases.py
 
 # 查看轮动手册
 sed -n '1,220p' references/playbook.md
@@ -83,7 +94,7 @@ sed -n '1,220p' references/playbook.md
 ## 目录结构
 
 ```text
-rotation-radar/
+skill-rotation-radar/
 ├── SKILL.md
 ├── README.md
 ├── README.en.md
@@ -95,9 +106,26 @@ rotation-radar/
 ├── assets/
 │   └── rotation-radar.svg
 ├── agents/
-│   └── openai.yaml
+│   ├── openai.yaml
+│   ├── claude-code.md
+│   ├── cursor-rule.mdc
+│   ├── portable-loader.md
+│   └── openclaw.md
+├── metadata.yaml
 └── LICENSE
 ```
+
+## 运行时入口
+
+| 运行时 | 入口 | 用法 |
+| --- | --- | --- |
+| Codex | `agents/openai.yaml` + `SKILL.md` | 通过技能名称触发 |
+| Claude Code | `agents/claude-code.md` | 读取入口后加载 `SKILL.md` |
+| Cursor | `agents/cursor-rule.mdc` | 将规则复制到项目 `.cursor/rules/` |
+| Hermes | `agents/portable-loader.md` | 按便携入口加载核心说明 |
+| OpenClaw | `agents/openclaw.md` | 按入口加载核心说明 |
+
+许可元数据见 `metadata.yaml`，SPDX 标识为 `GPL-3.0-only`。
 
 ## 核心约束
 
@@ -107,7 +135,7 @@ rotation-radar/
 | 至少两个确认信号 | 相对强弱之外，还要宽度、成交或资金流确认 |
 | 周期必须一致 | 不用 5 日信号支撑 3 个月配置 |
 | 宽度恶化必须降级 | 少数权重股拉动不等于健康轮动 |
-| 只述不荐 | 输出研究结构，不构成投资建议 |
+| 只述不荐 | 输出研究结构、风险假设与可复核证据 |
 
 ## 测试用例
 
@@ -123,9 +151,9 @@ rotation-radar/
 运行：
 
 ```bash
-python scripts/check_test_cases.py
+python3 scripts/check_test_cases.py
 ```
 
 ## 免责声明
 
-本项目仅用于市场状态与轮动研究流程整理，不构成任何投资建议，不保证任何配置收益。
+本项目用于市场状态与轮动研究流程整理。研究结论应结合数据质量、交易约束和风险预算独立复核。

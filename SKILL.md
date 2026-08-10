@@ -1,9 +1,28 @@
 ---
 name: rotation-radar
 description: 当需要分析市场状态、行业轮动、ETF 强弱排序、市场宽度、风格切换或战术配置信号时，使用此 skill。适用于 A 股、港股、美股和 ETF 池的行业轮动分析、risk-on/risk-off 状态识别、相对强弱排名、宽度确认、假突破过滤和轮动失效条件设计。
+metadata:
+  organization: QuantSkills
+  organization_url: https://github.com/quantskills
+  repository: skill-rotation-radar
+  repository_url: https://github.com/quantskills/skill-rotation-radar
+  project_type: skill
+  collection: quantitative-research
+  project_status: community-project
+  review_status: unreviewed
+  license: GPL-3.0-only
+  category: quantitative-finance
 ---
 
 # 轮动雷达
+
+## 项目声明
+
+- 项目类型：Community Project / Skill；当前未声明为官方、认证或生产项目
+- 维护者：本仓库维护者及贡献者
+- 数据来源：由使用者提供或指定的市场/ETF 行情、成分股宽度、基准、成交量和资金流数据
+- 研究边界：仅用于市场状态与轮动研究及教育示例，不自动获取数据、不执行交易
+- 已知限制：结论依赖观察窗口、基准选择、成分股可得性、宽度口径和确认信号质量；本技能不能替代实时行情或交易规则核验
 
 ## 适用场景
 
@@ -66,7 +85,7 @@ valid_rotation    = rotation_score 高 + 至少两个确认信号同向
 
 - 为每个主要结论给出失效条件
 - 失效条件应尽量来自相对强弱、宽度或状态变化，而不是事后解释
-- 不把排名直接变成买卖建议
+- 不把排名直接变成执行指令
 
 ## 输出格式
 

@@ -12,6 +12,17 @@
 
 Rotation Radar is not a simple return-ranking tool. It asks whether market leadership is migrating, whether that migration is confirmed internally, and what would invalidate the read.
 
+## Project Status and Boundaries
+
+| Item | Statement |
+| --- | --- |
+| Status | Community Project; not reviewed, certified, or endorsed by QUANTSKILLS |
+| Maintainers | Repository maintainers and contributors |
+| Data sources | User-provided or user-designated market/ETF prices, constituent breadth, benchmarks, volume, and flow data |
+| Assumptions | Windows, benchmark, tradable universe, and confirmation-signal definitions match the research question |
+| Limitations | Constituent changes, narrow leadership, delayed data, flow definitions, and regime jumps can change the result |
+| Risk boundary | Research and educational example only; it neither fetches data nor executes trades |
+
 ## Core Logic
 
 ```text
@@ -27,7 +38,7 @@ valid_rotation    = high score + at least two confirmations
 ## Quick Start
 
 ```bash
-python scripts/check_test_cases.py
+python3 scripts/check_test_cases.py
 sed -n '1,220p' references/playbook.md
 ```
 
@@ -48,9 +59,9 @@ sed -n '1,220p' references/playbook.md
 Run:
 
 ```bash
-python scripts/check_test_cases.py
+python3 scripts/check_test_cases.py
 ```
 
 ## Disclaimer
 
-For regime and rotation research only. Not investment advice.
+For market-regime and rotation research workflow design. Validate all conclusions against source data and execution constraints.
